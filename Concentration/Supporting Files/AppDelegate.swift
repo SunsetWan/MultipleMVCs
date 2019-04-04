@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  Concentration3
+//  Concentration
 //
-//  Created by sunsetwan on 2019/3/5.
-//  Copyright © 2019 sunsetwan. All rights reserved.
+//  Created by jamfly on 2017/12/26.
+//  Copyright © 2017年 jamfly. All rights reserved.
 //
 
 import UIKit
@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         return true
     }
