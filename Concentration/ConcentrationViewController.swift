@@ -24,7 +24,7 @@ class ConcentrationViewController: UIViewController {
     }
     
     private func updateFlipCountLabel() {
-        let attributtes: [NSAttributedStringKey:Any] = [
+        let attributtes: [NSAttributedString.Key:Any] = [
             .strokeWidth: 5.0,
             .strokeColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         ]
@@ -41,7 +41,7 @@ class ConcentrationViewController: UIViewController {
     
     @IBAction private func touchCard(_ sender: UIButton) {
         flipCount += 1
-        if let cardNumber = cardsButton.index(of: sender) {
+        if let cardNumber = cardsButton.firstIndex(of: sender) {
             game.chooseCard(at: cardNumber)
             updateViewFromModel()
         } else {
@@ -56,10 +56,10 @@ class ConcentrationViewController: UIViewController {
                 let button = cardsButton[index]
                 let card = game.cards[index]
                 if card.isFaceUp {
-                    button.setTitle(emoji(for: card), for: UIControlState.normal)
+                    button.setTitle(emoji(for: card), for: UIControl.State.normal)
                     button.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
                 } else {
-                    button.setTitle("", for: UIControlState.normal)
+                    button.setTitle("", for: UIControl.State.normal)
                     button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 0) : #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
                     
                 }
