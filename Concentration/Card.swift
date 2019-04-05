@@ -30,9 +30,7 @@ struct Card{
 
 extension Card: Hashable {
 
-//    var hashValue: Int {
-//        return identifier
-//    }
+
     // upgrade to Swift 5.0
     func hash(into hasher: inout Hasher) {
         hasher.combine(self.identifier)
