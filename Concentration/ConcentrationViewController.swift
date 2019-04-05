@@ -52,7 +52,7 @@ class ConcentrationViewController: UIViewController {
     
     private func updateViewFromModel() {
         
-        // It's crucial to understand that this preparation is happening BEFORE outlets get set!
+         
         if cardsButton != nil {
             for index in cardsButton.indices {
                 let button = cardsButton[index]

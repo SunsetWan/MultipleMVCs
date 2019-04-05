@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ConcentrationThemeChooserViewController: UIViewController {
+class ConcentrationThemeChooserViewController: UIViewController, UISplitViewControllerDelegate{
 
     let themes = [
         "Sports": "⚽️🏀🏈⚾️🎾🏐🏉🎱🏓⛷🎳⛳️",
@@ -16,6 +16,27 @@ class ConcentrationThemeChooserViewController: UIViewController {
         "Faces": "😀😌😎🤓😠😤😭😰😱😳😜😇"
     ]
 
+    override func awakeFromNib() {
+        splitViewController?.delegate = self
+    }
+    
+    // There is a little bit of advanced use of delegation.
+    // To prevent this from happening, we need to set 'True'
+    // If this method returns 'False', you're basically saying I did not collapse this for you, so you do it.
+    // If concentration game has a nil theme, then theme has never been set, we don't want to do that collapse
+    func splitViewController(
+        _ splitViewController: UISplitViewController,
+         collapseSecondary secondaryViewController: UIViewController,
+         onto primaryViewController: UIViewController
+        ) -> Bool {
+        if let cvc = secondaryViewController as? ConcentrationViewController {
+            if cvc.theme == nil {
+                return true
+            }
+        }
+        return  false
+    }
+    
     // Why do we need performSegue mannually instead of ctrl-dragging in storyboard?
     // Because someone may want conditional segueing.
     @IBAction func changeTheme(_ sender: Any) {
@@ -39,7 +60,7 @@ class ConcentrationThemeChooserViewController: UIViewController {
         
     }
     
-    // On an non-Plus iPhone, there isn't a splitViewController.
+    // On an non-Plus iPhone, a splitViewController doesn't show directly.
     private var splitDetailConcentrationViewController: ConcentrationViewController? {
         return splitViewController?.viewControllers.last as? ConcentrationViewController
     }
