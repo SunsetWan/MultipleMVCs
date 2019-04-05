@@ -18,7 +18,7 @@ class ConcentrationThemeChooserViewController: UIViewController {
 
     
     // MARK: - Navigation
-    
+    // It's crucial to understand that this preparation is happening BEFORE outlets get set!
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Choose Theme" {
             if let themeName = (sender as? UIButton)?.currentTitle, let theme = themes[themeName] {
